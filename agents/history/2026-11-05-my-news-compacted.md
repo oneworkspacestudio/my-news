@@ -110,3 +110,10 @@ Public channel/download verification completed using the matching116 installer:
 its successful no-token check was reused after comparing the checked binary to
 the public hash and confirming News1 in the output. The older115 check correctly
 refused the116 integration format. No published asset or release tag was changed.
+
+Secondary reconnected17:14 UTC with36 healthy existing services and no News.
+Its actual final manager version/receipt still needs authenticated Updates UI review;
+do not repeat repair or claim secondary delivered. Wait for user to dismiss the
+Windows permission overlay and finish current MyAccounts sign-in, then inspect
+Updates/reload/check and select only News. Primary115/News1 is complete. Task-owned
+temporary build/test directories cleaned; public artifacts and receipts retained.

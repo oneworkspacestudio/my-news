@@ -17,8 +17,10 @@ The first owner PC completed the normal protected115 + News1 update: all11 News
 payloads and the manager match the release, five native-served static assets match
 the tested app, and37 services run without new failures. Existing app contracts,
 identities/credentials, paths and the verified recovery copy are preserved.
-The second PC's protected116 reinstall is in progress; News installation and its
-completion receipt remain pending. Owner PCs were deployment targets, never fixtures.
+The second PC reconnected after its protected reinstall request, with all36 existing
+services healthy. Its final updater receipt/version and My News installation still
+need the authenticated Updates UI; a Windows permission prompt and MyAccounts
+sign-in require the user's input. Owner PCs were deployment targets, never fixtures.
 
 ## Verified
 
