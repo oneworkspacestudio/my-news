@@ -1,0 +1,25 @@
+{
+  "workspaceCandidate": "0.3.0-preview.114",
+  "installerIntegration": 9,
+  "apps": 38,
+  "packages": 462,
+  "newsOwnedPackages": [
+    "news-contract",
+    "news-doc-5f77d9b61138bdc8",
+    "news-doc-d97698d7d2bc8f6e",
+    "news-doc-2605206b7e64be69",
+    "news-LICENSE",
+    "news-manifest",
+    "news",
+    "news-NOTICE",
+    "news-doc-b335630551682c19",
+    "news-THIRD-PARTY-LICENSES.txt",
+    "news-doc-76c72b3fc4c968e1"
+  ],
+  "newsExecutableSHA256": "e2fb5a4b45cca9a0cd0a66a4b901acad2a0bed2bad56be20071625e00afca7a0",
+  "newsArchiveSHA256": "dbe659af474e15d59daba4628f645d879bed94f3d3a8eb2074ef42616a84ff4e",
+  "allNewsPayloadsVerified": true,
+  "candidateOnly": true,
+  "published": false,
+  "ownerInstallationsChanged": false
+}

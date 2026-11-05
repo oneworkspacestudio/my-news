@@ -1,0 +1,1 @@
+{"schema":1,"id":"news","version":"0.1.0-preview.1","route":"/news","oidc":true,"workspaceInstallerIntegration":9,"minimumWorkspaceVersion":"0.3.0-preview.115","singleExecutable":true,"capabilities":["native-news-v1"]}

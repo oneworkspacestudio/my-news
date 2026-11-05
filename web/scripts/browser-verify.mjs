@@ -1,0 +1,31 @@
+import {chromium,expect} from '@playwright/test';
+import {mkdir,writeFile} from 'node:fs/promises';
+const root=new URL('../../docs/screenshots/',import.meta.url);await mkdir(root,{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:true});const context=await browser.newContext({viewport:{width:1440,height:1000},serviceWorkers:'allow'});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+const url=process.env.NEWS_TEST_URL||'http://localhost:19330/news/';
+try{
+ await page.goto(url);await page.getByLabel('Email address').fill('reader@example.test');await page.getByLabel('Password',{exact:true}).fill('synthetic-news-test');await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page.getByRole('heading',{name:'Your briefing',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Refresh news',exact:true}).first().click();await expect(page.locator('.card--story')).not.toHaveCount(0);await expect(page.getByRole('status')).toContainText('18 feeds refreshed');
+ await page.screenshot({path:new URL('briefing-desktop.png',root).pathname.replace(/^\/(.:)/,'$1')});
+ await page.getByLabel('News location').selectOption('Asia');await expect(page.locator('.card--story,.card--story-lead')).toHaveCount(6);await page.getByLabel('News location').selectOption('All locations');
+ await page.getByLabel('Search news').fill('researchers');await expect(page.locator('.card--story,.card--story-lead')).toHaveCount(18);await page.getByLabel('Search news').fill('');
+ await page.getByRole('button',{name:'Science',exact:true}).click();await page.getByRole('button',{name:'Follow Science',exact:true}).click();await page.getByRole('button',{name:'Following',exact:true}).click();await expect(page.locator('.card--story')).toHaveCount(6);
+ await page.getByRole('button',{name:'Your briefing',exact:true}).click();await page.getByRole('button',{name:/^Read Cities/}).first().click();await page.getByRole('button',{name:'Save offline',exact:true}).click();await expect(page.getByRole('status').first()).toContainText('Saved on this device');await expect(page.locator('.section--article-body')).toContainText('PUBLIC ARTICLE TEXT');
+ await page.screenshot({path:new URL('reader-desktop.png',root).pathname.replace(/^\/(.:)/,'$1')});
+ await page.getByRole('button',{name:'Back to stories'}).click();await page.getByRole('button',{name:'Sources',exact:true}).click();await page.getByLabel('Publisher name',{exact:true}).fill('Synthetic custom source');await page.getByLabel('RSS or Atom feed URL').fill('https://synthetic.example.test/feed.xml');await page.getByLabel('Source location').fill('Manchester');await page.getByRole('button',{name:'Add source',exact:true}).click();await expect(page.getByRole('heading',{name:'Synthetic custom source'})).toBeVisible();
+ await page.getByRole('button',{name:'Your briefing',exact:true}).click();await page.setViewportSize({width:390,height:844});await page.screenshot({path:new URL('briefing-mobile.png',root).pathname.replace(/^\/(.:)/,'$1')});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.evaluate(()=>navigator.serviceWorker.ready);await page.reload();await expect(page.getByRole('heading',{name:'Your briefing',exact:true})).toBeVisible();
+ await context.setOffline(true);await page.reload();await expect(page.getByRole('heading',{name:'Your offline library'})).toBeVisible();await expect(page.getByText('Available offline · Article reading copy')).toBeVisible();await page.getByRole('button',{name:/^Read Cities/}).click();await expect(page.locator('.section--article-body')).toContainText('PUBLIC ARTICLE TEXT');
+ await expect(page.getByText(/Article reading copy: text extracted/)).toBeVisible();
+ await page.screenshot({path:new URL('reader-offline-mobile.png',root).pathname.replace(/^\/(.:)/,'$1')});
+ await context.setOffline(false);await expect(page.getByRole('button',{name:'Sign out and remove offline data'})).toBeVisible();await page.waitForResponse(r=>r.url().endsWith('/api/state')).catch(()=>{});
+ // Simulate another tab changing the shared cookie. The current tab must refuse
+ // stale-account API requests, reconnect, and clear the first reader's downloads.
+ await page.evaluate(async()=>{const me=await(await fetch('./api/me')).json();const created=await fetch('./api/local-users',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':me.csrf},body:JSON.stringify({email:'second@example.test',password:'synthetic-news-test'})});if(!created.ok)throw Error('Cannot create synthetic second account');const login=await fetch('./api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:'second@example.test',password:'synthetic-news-test'})});if(!login.ok)throw Error('Cannot switch synthetic account')});
+ await page.getByRole('button',{name:'Back to stories'}).click();await page.getByRole('button',{name:'Refresh news',exact:true}).click();
+ await expect.poll(()=>page.evaluate(()=>new Promise(resolve=>{const r=indexedDB.open('my-news-v1');r.onsuccess=()=>{const db=r.result,q=db.transaction('data').objectStore('data').get('owner');q.onsuccess=()=>{resolve(q.result?.name);db.close()}}}))).toBe('second');
+ await page.getByRole('button',{name:'Sign out and remove offline data'}).click();await expect(page.getByRole('button',{name:'Sign in',exact:true})).toBeVisible();
+ expect(await page.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open('my-news-v1');r.onsuccess=()=>{const db=r.result,t=db.transaction('data'),q=t.objectStore('data').get('saved');q.onsuccess=()=>{resolve(q.result===undefined);db.close()};q.onerror=()=>reject(q.error)}}))).toBe(true);
+ expect(errors).toEqual([]);await writeFile(new URL('../../docs/browser-acceptance.json',import.meta.url),JSON.stringify({syntheticPublishers:true,nativeHost:true,desktop:1440,mobile:390,checks:['login','RSS refresh','search','region filter','follow topic','public article save','custom source','offline reload','offline reader','account change clears previous downloads','logout clears offline storage'],browserErrors:errors},null,2));console.log('PASS native desktop/mobile, offline reload, saved article and logout cleanup');
+}finally{await context.close();await browser.close()}

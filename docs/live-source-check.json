@@ -1,0 +1,97 @@
+{
+  "checkedAt": "2026-11-05T12:10:25Z",
+  "sources": [
+    {
+      "name": "The Guardian",
+      "url": "https://www.theguardian.com/world/rss",
+      "stories": 45
+    },
+    {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "stories": 25
+    },
+    {
+      "name": "The Guardian · Environment",
+      "url": "https://www.theguardian.com/environment/rss",
+      "stories": 25
+    },
+    {
+      "name": "BBC News",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "stories": 20
+    },
+    {
+      "name": "BBC News · Latin America",
+      "url": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml",
+      "stories": 18
+    },
+    {
+      "name": "The Guardian · Australia",
+      "url": "https://www.theguardian.com/australia-news/rss",
+      "stories": 20
+    },
+    {
+      "name": "BBC Business",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+      "stories": 45
+    },
+    {
+      "name": "BBC Science",
+      "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+      "stories": 33
+    },
+    {
+      "name": "BBC Health",
+      "url": "https://feeds.bbci.co.uk/news/health/rss.xml",
+      "stories": 55
+    },
+    {
+      "name": "The Guardian · Technology",
+      "url": "https://www.theguardian.com/uk/technology/rss",
+      "stories": 31
+    },
+    {
+      "name": "BBC News · Europe",
+      "url": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
+      "stories": 23
+    },
+    {
+      "name": "The Guardian · Sport",
+      "url": "https://www.theguardian.com/sport/rss",
+      "stories": 48
+    },
+    {
+      "name": "BBC News · UK",
+      "url": "https://feeds.bbci.co.uk/news/uk/rss.xml",
+      "stories": 23
+    },
+    {
+      "name": "BBC News · Africa",
+      "url": "https://feeds.bbci.co.uk/news/world/africa/rss.xml",
+      "stories": 32
+    },
+    {
+      "name": "BBC News · Asia",
+      "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml",
+      "stories": 17
+    },
+    {
+      "name": "BBC News · US \u0026 Canada",
+      "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
+      "stories": 21
+    },
+    {
+      "name": "The Guardian · Culture",
+      "url": "https://www.theguardian.com/culture/rss",
+      "stories": 65
+    },
+    {
+      "name": "BBC News · Middle East",
+      "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
+      "stories": 24
+    }
+  ],
+  "success": 18,
+  "total": 18
+}

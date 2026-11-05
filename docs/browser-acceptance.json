@@ -1,0 +1,20 @@
+{
+  "syntheticPublishers": true,
+  "nativeHost": true,
+  "desktop": 1440,
+  "mobile": 390,
+  "checks": [
+    "login",
+    "RSS refresh",
+    "search",
+    "region filter",
+    "follow topic",
+    "public article save",
+    "custom source",
+    "offline reload",
+    "offline reader",
+    "account change clears previous downloads",
+    "logout clears offline storage"
+  ],
+  "browserErrors": []
+}

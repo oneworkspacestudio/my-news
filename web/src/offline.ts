@@ -1,0 +1,5 @@
+const NAME='my-news-v1';
+function open():Promise<IDBDatabase>{return new Promise((resolve,reject)=>{const r=indexedDB.open(NAME,1);r.onupgradeneeded=()=>r.result.createObjectStore('data');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+export async function read<T>(key:string):Promise<T|undefined>{const db=await open();return new Promise((resolve,reject)=>{const t=db.transaction('data');const r=t.objectStore('data').get(key);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);t.oncomplete=()=>db.close()})}
+export async function write(key:string,value:any){const db=await open();return new Promise<void>((resolve,reject)=>{const t=db.transaction('data','readwrite');t.objectStore('data').put(value,key);t.oncomplete=()=>{db.close();resolve()};t.onerror=t.onabort=()=>{db.close();reject(t.error||new Error('Device storage is unavailable'))}})}
+export async function clear(){const db=await open();return new Promise<void>((resolve,reject)=>{const t=db.transaction('data','readwrite');t.objectStore('data').clear();t.oncomplete=()=>{db.close();resolve()};t.onerror=()=>reject(t.error)})}
