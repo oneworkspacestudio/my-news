@@ -81,3 +81,32 @@ Publication, channel promotion and normal protected owner updates are now author
 Suite rebased onto public d84c798, retaining Finance5, Voice8, MyAI24, Tube7 and Slicer8.
 Workspace114 is already public; News integration9 now requires Workspace115.
 Earlier candidate114 evidence remains historical; final public verification follows.
+
+## Publication verified
+
+My News1 is public from0ab0d4c; Windows archive SHA256
+41d341da2f9316b26066672ddeef73cfebd74262c6ca1758b2b7394417e64abd,
+with the exact native-tested executable e2fb5a4b45cc. Workspace115 is public
+from08e175d after final fresh/omit/News-only-update/rollback/114-to115 acceptance.
+All480 suite assets and permanent signed Android13 companion verified. An upload
+duplicate was recovered by retaining matching draft assets and uploading only
+missing files, then rerunning the mandatory publisher. No public assets replaced.
+
+Concurrent Workspace116 retains all11 tested News payloads and115 source. Shared
+channel merge af70e7b preserves116, News1, Commute1 and Finance6. Anonymous full
+latest-bundle verification and both owner installations remain in progress; record
+their actual completion before claiming both PCs delivered. All development and
+acceptance tests used isolated synthetic identities/data, never owner fixtures.
+
+Primary owner delivery completed115 + News1 at17:02 UTC: all11 payload hashes and
+manager match public release; five native-served static assets match the tested
+dist;37 services run; unselected apps/packages, identities/credentials, locations
+and latest verified recovery preserved. Secondary verified116 repair is active;
+its tunnel has not reconnected yet, and News installation remains pending there.
+Do not repeat the active repair. The owner's browser requires manual dismissal of
+a Windows permission prompt and MyAccounts sign-in before visual launch verification.
+
+Public channel/download verification completed using the matching116 installer:
+its successful no-token check was reused after comparing the checked binary to
+the public hash and confirming News1 in the output. The older115 check correctly
+refused the116 integration format. No published asset or release tag was changed.

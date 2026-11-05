@@ -51,9 +51,11 @@ listens on loopback port 9030 and keeps state in the user's configuration direct
 under `OneWorkspace/MyNews`, separately from its executable. An explicit `--data`
 folder must be private NTFS on Windows. Managed installations use MyAccounts instead.
 
-For Workspace, use the normal installer/catalog path; copying an executable into
-an existing installation is not a managed install. Source integration is in the
-separate `workspace-my-news` checkout. See [delivery status](docs/ACCEPTANCE.md),
+For Workspace, install My News through **Updates and backups** with Workspace
+preview115 or later. If your current Workspace asks for the newer installer,
+use its backed-up reinstall option first, then select My News. The
+[My News release](https://github.com/oneworkspacestudio/my-news/releases/tag/v0.1.0-preview.1)
+also includes a standalone download. See [delivery status](docs/ACCEPTANCE.md),
 [security](docs/SECURITY.md) and [source notes](docs/RESEARCH.md).
 
 Browser acceptance uses synthetic publishers and isolated accounts:

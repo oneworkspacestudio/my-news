@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "passed": true,
+  "checks": [
+    {
+      "label": "fresh",
+      "workspace": "0.3.0-preview.115",
+      "news": "0.1.0-preview.1",
+      "myAccounts": true,
+      "seamlessReopen": true,
+      "privateApiDenied": true,
+      "savedCopyPreserved": true
+    },
+    {
+      "label": "app-only-update",
+      "workspace": "0.3.0-preview.115",
+      "news": "0.1.0-preview.2-test",
+      "myAccounts": true,
+      "seamlessReopen": true,
+      "privateApiDenied": true,
+      "savedCopyPreserved": true
+    },
+    {
+      "label": "app-only-rollback",
+      "workspace": "0.3.0-preview.115",
+      "news": "0.1.0-preview.1",
+      "myAccounts": true,
+      "seamlessReopen": true,
+      "privateApiDenied": true,
+      "savedCopyPreserved": true
+    },
+    {
+      "label": "omitted",
+      "programNotInstalled": true
+    },
+    {
+      "label": "upgrade",
+      "workspace": "0.3.0-preview.115",
+      "news": "0.1.0-preview.1",
+      "myAccounts": true,
+      "seamlessReopen": true,
+      "privateApiDenied": true,
+      "savedCopyPreserved": true
+    }
+  ],
+  "fresh": true,
+  "explicitOmission": true,
+  "upgradeFrom": "0.3.0-preview.114",
+  "protectedUpdate": true,
+  "appOnlyUpdateAndRollback": true,
+  "originalFilesPreserved": true,
+  "ownerDataUsed": false,
+  "physicalPhone": false,
+  "reboot": false,
+  "installerSHA256": "5ddab95dc108a74a71ede907afc7b393ff89b3c171782983d1db1fda099615bf",
+  "bundleSHA256": "9763d10077c46d104862a061908351d477ff125d019dc79f9656c74c7e616dfe"
+}
