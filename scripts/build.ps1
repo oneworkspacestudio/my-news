@@ -11,7 +11,9 @@ Push-Location $root
 try{
  & npm.cmd --prefix web run build;Check 'Frontend build failed'
  if(-not $Candidate){$dirty=& git -c $safe -C $root status --porcelain;if($LASTEXITCODE -or $dirty){throw 'Generation changed release source; review and commit before packaging'}}
- & $Go test -buildvcs=false ./...;Check 'Backend tests failed'
+ # Go 1.27 also uses GOTMPDIR for t.TempDir; private test data needs NTFS.
+ $compileTemp=$env:GOTMPDIR
+ try { $env:GOTMPDIR=$env:TEMP; & $Go test -buildvcs=false ./...;Check 'Backend tests failed' } finally { $env:GOTMPDIR=$compileTemp }
  & $Go vet ./...;Check 'Go vet failed'
  $stage=Join-Path $Output 'package';New-Item -ItemType Directory -Path $stage | Out-Null
  & $Go build -buildvcs=false -trimpath -ldflags '-s -w' -o (Join-Path $stage 'MyNews.exe') ./cmd/my-news;Check 'Windows build failed'
